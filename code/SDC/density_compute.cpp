@@ -130,8 +130,8 @@ void computeDensity(double** data, double point[], double r, int* dense, int N, 
 			return points[a + head].dsum < points[b + head].dsum;
 			}
 		);
-		for (int j = 0; j < tail - head; j++) {// ½«¸ÄË÷ÒıÓ³Éä»ØpointsÖĞ¶ÔÓ¦µÄµã
-			points[head + indeces[j]].idxSortedByDim = j;//¶ÔÓÚpointsÖĞµÄµãi£¬¾ÍÖªµÀËüÔÚ°´Î¬¶ÈºÍÅÅĞòºóµÄÎ»ÖÃ
+		for (int j = 0; j < tail - head; j++) {// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½pointsï¿½Ğ¶ï¿½Ó¦ï¿½Äµï¿½
+			points[head + indeces[j]].idxSortedByDim = j;//ï¿½ï¿½ï¿½ï¿½pointsï¿½ĞµÄµï¿½iï¿½ï¿½ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½Î¬ï¿½Èºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 		}
 		
 		/*    calculate the density of all objects in the i-th public annular region  */
@@ -165,7 +165,7 @@ void computeDensity(double** data, double point[], double r, int* dense, int N, 
 	delete[] points;
 }
 
-void main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) {
 
 	ifstream infile;
 	//string file_path = (string)argv[1] + (string)argv[2] + "/miss_" + (string)argv[3] + "_complete_objects.txt";
@@ -189,7 +189,7 @@ void main(int argc, char* argv[]) {
 	infile.open(file_path, ios::in);
 	if (!infile) {
 		cout << "open file '"<<file_path<<"' error!" << endl;
-		return;
+		return 0;
 	}
 	string buf;
 	int row = 0;
@@ -243,7 +243,7 @@ void main(int argc, char* argv[]) {
 	ofstream fout(save_path);
 	if (!fout) {
 		cout << "open file '" << save_path << "' error!" << endl;
-		return;
+		return 0;
 	}
 	for (int i = 0; i < N; i++) {
 		fout << *dense << endl;
@@ -257,4 +257,5 @@ void main(int argc, char* argv[]) {
 	delete[] point;
 	delete[] data;
 	delete[] dense_start;
+	return 0;
 }
